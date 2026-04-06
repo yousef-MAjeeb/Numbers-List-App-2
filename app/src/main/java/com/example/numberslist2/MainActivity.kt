@@ -46,10 +46,20 @@ class MainActivity : ComponentActivity() {
 fun NumberList(modifier: Modifier){
     val englishNumList = listOf<String>("One","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten")
     val arabicNumList = listOf<String>("واحد","إثنان","ثلاثة","أربعة","خمسة","Six","سبعة","ثمانية","تسعة","عشرة")
+    val imageResourcesList = listOf(
+        R.drawable.number_one, R.drawable.number_two,
+        R.drawable.number_three, R.drawable.number_four,
+        R.drawable.number_five, R.drawable.number_six,
+        R.drawable.number_seven, R.drawable.number_eight,
+        R.drawable.number_nine, R.drawable.number_ten,
+    )
     LazyColumn() {
         items(10){ i ->
-            NumberCard(i,englishNumList[i], arabicNumList[i])
-
+            NumberCard(
+                imageResourcesList[i],
+                englishNumList[i],
+                arabicNumList[i]
+            )
         }
     }
 }
@@ -68,7 +78,8 @@ fun NumberCard(numberImage: Int, englishNum: String, arabicNum: String) {
                 contentDescription = "image of the number",
                 modifier = Modifier
                     .width(80.dp)
-                    .height(80.dp),
+                    .height(80.dp)
+                    .padding(8.dp),
             )
             Column() {
                 Text(text = englishNum)
